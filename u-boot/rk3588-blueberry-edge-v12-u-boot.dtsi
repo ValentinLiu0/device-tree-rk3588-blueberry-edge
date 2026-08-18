@@ -1,0 +1,34 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+/*
+ * Copyright (c) 2026 Valentin Liu <valentinliu@icloud.com>
+ */
+
+#include "rk3588-u-boot.dtsi"
+
+&saradc {
+	bootph-pre-ram;
+	vdd-microvolts = <1800000>;
+};
+
+/* MMC section */
+// eMMC
+&sdhci {
+	cap-mmc-highspeed;
+	mmc-hs200-1_8v;
+};
+
+/* PCIe section */
+// AP6275P Wi-Fi
+&combphy1_ps {
+	status = "disabled";
+};
+
+&pcie2x1l0 {
+	status = "disabled";
+};
+
+/* UART section */
+// AP6275P Bluetooth
+&uart6 {
+	status = "disabled";
+};

@@ -106,10 +106,6 @@
 	/delete-node/ opp-1000000000;
 };
 
-&pd_gpu {
-	domain-supply = <&vdd_gpu_s0>;
-};
-
 &gpu {
 	mali-supply = <&vdd_gpu_s0>;
 	status = "okay";
@@ -166,24 +162,6 @@
 
 &tsadc {
 	status = "okay";
-};
-
-
-/* Rockchip Video Encoder/Decoder section */
-&pd_rkvdec0 {
-	domain-supply = <&vdd_vdenc_s0>;
-};
-
-&pd_rkvdec1 {
-	domain-supply = <&vdd_vdenc_s0>;
-};
-
-&pd_venc0 {
-	domain-supply = <&vdd_vdenc_s0>;
-};
-
-&pd_venc1 {
-	domain-supply = <&vdd_vdenc_s0>;
 };
 
 

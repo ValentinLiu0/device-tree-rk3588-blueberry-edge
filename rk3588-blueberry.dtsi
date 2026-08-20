@@ -169,6 +169,24 @@
 };
 
 
+/* Rockchip Video Encoder/Decoder section */
+&pd_rkvdec0 {
+	domain-supply = <&vdd_vdenc_s0>;
+};
+
+&pd_rkvdec1 {
+	domain-supply = <&vdd_vdenc_s0>;
+};
+
+&pd_venc0 {
+	domain-supply = <&vdd_vdenc_s0>;
+};
+
+&pd_venc1 {
+	domain-supply = <&vdd_vdenc_s0>;
+};
+
+
 /* Rockchip Video Output Processor section */
 &vop {
 	assigned-clocks = <&cru ACLK_VOP>;

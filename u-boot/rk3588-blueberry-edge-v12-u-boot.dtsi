@@ -5,6 +5,11 @@
 
 #include "rk3588-u-boot.dtsi"
 
+/* U-Boot shouldn't handle this */
+&scmi_shmem {
+	status = "disabled";
+};
+
 &saradc {
 	bootph-pre-ram;
 	vdd-microvolts = <1800000>;

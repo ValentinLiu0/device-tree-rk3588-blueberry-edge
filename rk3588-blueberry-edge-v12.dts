@@ -31,19 +31,19 @@
 		compatible = "simple-audio-card";
 		pinctrl-0 = <&hp_det>;
 		pinctrl-names = "default";
-		simple-audio-card,bitclock-master = <&masterdai>;
+		simple-audio-card,bitclock-master = <&cpudai>;
 		simple-audio-card,format = "i2s";
-		simple-audio-card,frame-master = <&masterdai>;
+		simple-audio-card,frame-master = <&cpudai>;
 		simple-audio-card,mclk-fs = <256>;
 		simple-audio-card,hp-det-gpios = <&gpio3 RK_PB2 GPIO_ACTIVE_HIGH>;
 		simple-audio-card,name = "On-board Analog ES8388";
 		simple-audio-card,widgets = "Microphone", "Main Mic",
 					    "Microphone", "Headset Mic",
-					    "Headphone", "Headphone",
+					    "Headphone", "Headphones",
 					    "Speaker", "Speaker";
 
-		simple-audio-card,routing = "Headphone", "LOUT1",
-					    "Headphone", "ROUT1",
+		simple-audio-card,routing = "Headphones", "LOUT1",
+					    "Headphones", "ROUT1",
 					    "Speaker", "LOUT2",
 					    "Speaker", "ROUT2",
 					    "LINPUT1", "Main Mic",
@@ -51,14 +51,16 @@
 					    "RINPUT1", "Headset Mic",
 					    "RINPUT2", "Headset Mic";
 
-		simple-audio-card,pin-switches = "Headphone", "Speaker";
+		simple-audio-card,pin-switches = "Headphones", "Speaker";
 
-		masterdai: simple-audio-card,codec {
+		codecdai: simple-audio-card,codec {
 			sound-dai = <&es8388>;
+			system-clock-frequency = <12288000>;
 		};
 
-		simple-audio-card,cpu {
+		cpudai: simple-audio-card,cpu {
 			sound-dai = <&i2s0_8ch>;
+			system-clock-frequency = <12288000>;
 		};
 	};
 
@@ -418,16 +420,13 @@
 	es8388: es8388@10 {
 		compatible = "everest,es8388", "everest,es8323";
 		reg = <0x10>;
+		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
+		assigned-clock-rates = <12288000>;
 		clocks = <&cru I2S0_8CH_MCLKOUT>;
-		clock-names = "mclk";
 		AVDD-supply = <&vcc_1v8_s0>;
 		DVDD-supply = <&vcc_1v8_s0>;
 		HPVDD-supply = <&vcc_3v3_s0>;
 		PVDD-supply = <&vcc_3v3_s0>;
-		pinctrl-0 = <&i2s0_mclk>;
-		pinctrl-names = "default";
-		assigned-clocks = <&cru I2S0_8CH_MCLKOUT>;
-		assigned-clock-rates = <12288000>;
 		#sound-dai-cells = <0>;
 		status = "okay";
 	};
@@ -520,6 +519,7 @@
 &i2s0_8ch {
 	pinctrl-names = "default";
 	pinctrl-0 = <&i2s0_lrck
+		     &i2s0_mclk
 		     &i2s0_sclk
 		     &i2s0_sdi0
 		     &i2s0_sdo0>;

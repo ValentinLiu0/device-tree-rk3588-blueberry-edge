@@ -558,13 +558,11 @@
 
 &pcie2x1l0 {
 	reset-gpios = <&gpio1 RK_PB4 GPIO_ACTIVE_HIGH>;
-	rockchip,skip-scan-in-resume;
 	status = "okay";
 };
 
 // NVME M.2 M-Key
 &pcie30phy {
-	// rockchip,pcie30-phymode = <PHY_MODE_PCIE_AGGREGATION>;
 	status = "okay";
 };
 
@@ -1078,7 +1076,6 @@
 		vcc3v3_pcie30_en: vcc3v3-pcie30-en {
 			rockchip,pins = <1 RK_PC4 RK_FUNC_GPIO &pcfg_pull_up>;
 		};
-
 	};
 };
 

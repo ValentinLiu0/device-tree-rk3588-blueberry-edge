@@ -199,6 +199,12 @@
 		power-on_gpio = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
 		reset_gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>; //GPIO_C4
 	};
+
+	bcmdhd_wlan_0: bcmdhd_wlan@0 {
+		compatible = "android,bcmdhd_wlan";
+		gpio_wl_reg_on = <&gpio1 RK_PB1 GPIO_ACTIVE_HIGH>;
+		gpio_wl_host_wake = <&gpio1 RK_PA7 GPIO_ACTIVE_LOW>;
+	};
 };
 
 

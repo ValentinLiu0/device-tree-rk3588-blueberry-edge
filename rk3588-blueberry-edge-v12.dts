@@ -7,6 +7,7 @@
 
 #include <dt-bindings/soc/rockchip,vop2.h>
 #include "rk3588-blueberry.dtsi"
+#include "rk3588-rockchip-media.dtsi"
 
 / {	
 	model = "Mekotronics R58X-4G (RK3588 EDGE LP4x V1.2 BlueBerry Board)";
